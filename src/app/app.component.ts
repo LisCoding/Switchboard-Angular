@@ -6,18 +6,29 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  switch_on :boolean = false;
+  user = {
+    name: "",
+    email: ""
+  }
+  users = []
   switches: string[] = ["OFF", "OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF"];
-  color = 'red'
   switchOn(idx) {
     console.log("hey I was clicked", idx)
     var value = this.switches[idx];
     if(value == "OFF"){
       this.switches[idx] = 'ON'
-      this.color = 'green'
     } else {
       this.switches[idx] = 'OFF'
-      this.color = 'red'
+    }
+  }
+  onSubmit(){
+    console.log("I was submitted")
+    //now we can use this.user(object) to make an API call or manipulate it in other ways
+    this.users.push(this.user)
+    //we are setting the object to its original state
+    this.user = {
+      name: "",
+      email: ""
     }
   }
 }

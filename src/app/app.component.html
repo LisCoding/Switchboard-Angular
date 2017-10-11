@@ -6,4 +6,18 @@
   <div *ngFor='let switch of switches; let idx = index' class="box">
     <button (click)='switchOn(idx)' class="switch"  [ngClass]="{ 'switchOn': switch === 'ON'}">{{switch}}</button>
   </div>
+
+</div>
+<div class="">
+  <h1>Forms Two Ways Binding</h1>
+  <form (submit)='onSubmit()'>
+    <label for="">Name</label>
+    <input type="text" name="name"  required minLength = '2'[(ngModel)]='user.name' #name= 'ngModel'>
+    <label for="">email</label>
+    <input type="text" name="email"  required [(ngModel)]='user.email' #email= 'ngModel' >
+    <input type="submit" value="Submit">
+  </form>
+  {{user | json}}
+  {{ name.errors | json}}
+  {{ name.valid | json}}
 </div>
